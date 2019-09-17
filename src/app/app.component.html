@@ -2,26 +2,20 @@
   <div class="left">
     <h2>Users</h2>
     <hr />
-    <h3>John</h3>
-    <h3>Jane</h3>
-    <h3>Kelly</h3>
+    <h3 *ngFor="let user of users">{{user.username}}</h3>
   </div>
   <div class="right">
     <div class="chat-messages">
-        <h2>John</h2>
+        <!-- <h2>John</h2> -->
         <hr />
-        <div>
-          <p>Hello There!</p>
-          <p class="timestamp">Posted by John on 29 August 2019, 7:30 AM</p>
+        <div *ngFor="let message of messages">
+          <p>{{message.message}}</p>
+          <p class="timestamp">Posted by {{message.username}} on {{message.timestamp}}</p>
         </div>
-        <div>
-            <p>Hi hi</p>
-            <p class="timestamp">Posted by you on 29 August 2019, 7:31 AM</p>
-          </div>
     </div>
     <div class="chat-form">
-      <input type="text" id="chat-input" placeholder="Enter your message here">
-      <button id="submit-form">Submit Message</button>
+      <input [formControl]="chatInput" type="text" id="chat-input" placeholder="Enter your message here">
+      <button id="submit-form" (click)="onSubmit()">Submit Message</button>
     </div>
   </div>
   
